@@ -45,7 +45,7 @@ public class Article {
     @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
     @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
 
-    
+
     protected Article() {}  // arg 없는 생성자 만들기 : 롬복으로도 가능
 
     public Article(String title, String content, String hashtag) {
