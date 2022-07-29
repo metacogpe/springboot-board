@@ -10,6 +10,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @ToString
@@ -32,11 +34,18 @@ public class Article {
 
     @Setter private String hashtag;
 
+    // 양방향 바인딩 : 실무에서는 강한 결합으로 권장하지 않음
+    @ToString.Exclude    // ToString 순환참조 방지를 위해 여기서 끊음
+    @OrderBy("id")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL ) // cascade 제약조건 적용
+    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();  // 댓글의 중복을 허용하지 않고, 모아서 보기 위함
+
     @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
     @CreatedBy @Column(nullable = false, length = 100) private String createdBy;
     @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
     @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
 
+    
     protected Article() {}  // arg 없는 생성자 만들기 : 롬복으로도 가능
 
     public Article(String title, String content, String hashtag) {
