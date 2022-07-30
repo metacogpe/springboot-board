@@ -24,7 +24,7 @@ spring:
   h2:
     console:
       enabled: false
-  sql.init.mode: never
+#  sql.init.mode: never
 
 ---
 
