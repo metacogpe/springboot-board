@@ -44,7 +44,20 @@ class JpaRepositoryTest {
 
     }
 
+    @DisplayName("insert 테스트")
+    @Test
+    void givenTestData_whenInserting_thenWorksFine() {
 
+        // given
+        long previousCount = articleRepository.count();
+        Article article = Article.of("new article", "new content", "#hashtag");
+
+        // when
+        Article savedArticle = articleRepository.save(article);
+        // then
+        assertThat(articleRepository.count()).isEqualTo(previousCount + 1);
+
+    }
 
 
 }
