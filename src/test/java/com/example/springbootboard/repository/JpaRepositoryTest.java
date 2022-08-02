@@ -59,5 +59,19 @@ class JpaRepositoryTest {
 
     }
 
+    @DisplayName("update 테스트")
+    @Test
+    void givenTestData_whenUpdating_thenWorksFine() {
 
+        // given : 첫 번째 article을 찾아서, #Springboot로 셋팅
+        Article article = articleRepository.findById(1L).orElseThrow();
+        String updateHashtag = "#Springboot";
+        article.setHashtag(updateHashtag);
+
+        // when : 변경한 article 저장
+        Article savedArticle = articleRepository.save(article);
+        // then : 변경 저장된 아티클의 hashtag값이 업데이트한 hashtag값인지 확인
+        assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", updateHashtag);
+
+    }
 }
