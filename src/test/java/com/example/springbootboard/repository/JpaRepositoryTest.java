@@ -69,7 +69,7 @@ class JpaRepositoryTest {
         article.setHashtag(updateHashtag);
 
         // when : 변경한 article 저장
-        Article savedArticle = articleRepository.save(article);
+        Article savedArticle = articleRepository.saveAndFlush(article);  // saveAndFlush : update 쿼리 확인 용도
         // then : 변경 저장된 아티클의 hashtag값이 업데이트한 hashtag값인지 확인
         assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", updateHashtag);
 
