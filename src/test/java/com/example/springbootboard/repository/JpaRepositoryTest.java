@@ -74,4 +74,24 @@ class JpaRepositoryTest {
         assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", updateHashtag);
 
     }
+
+    @DisplayName("delete 테스트")
+    @Test
+    void givenTestData_whenDeleting_thenWorksFine() {
+
+        // given : 첫 번째 article을 찾아서, #Springboot로 셋팅
+        Article article = articleRepository.findById(1L).orElseThrow();
+        long previousArticleCount = articleRepository.count();
+        long previousArticleCommentCount = articleCommentRepository.count();
+        int deletedCommentSize = article.getArticleComments().size();
+
+        // when : 삭제
+        articleRepository.delete(article);
+
+       // then : article 삭제 카운트 비교, article comment 들 삭제 카운트 비교
+        assertThat(articleRepository.count()).isEqualTo(previousArticleCount - 1);
+        assertThat(articleCommentRepository.count()).isEqualTo(previousArticleCommentCount - deletedCommentSize);
+
+
+    }
 }
