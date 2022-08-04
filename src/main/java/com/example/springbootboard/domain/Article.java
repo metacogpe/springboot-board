@@ -22,9 +22,9 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Article {
+public class Article extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // auto increment 설정 : IDENTITY 방식으로 설정
@@ -42,10 +42,11 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL ) // cascade 제약조건 적용
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();  // 댓글의 중복을 허용하지 않고, 모아서 보기 위함
 
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy;
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
+    // AudingFields로 추출됨 : @MappedSuperclass 사용
+//    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
+//    @CreatedBy @Column(nullable = false, length = 100) private String createdBy;
+//    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
+//    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
 
 
     protected Article() {}  // arg 없는 생성자 만들기 : 롬복으로도 가능
