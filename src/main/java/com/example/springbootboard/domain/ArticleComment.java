@@ -20,9 +20,9 @@ import java.util.Objects;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 @Entity
-    public class ArticleComment {
+    public class ArticleComment extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // auto increment 설정 : IDENTITY 방식으로 설정
@@ -30,10 +30,10 @@ import java.util.Objects;
     @Setter @ManyToOne(optional = false) private Article article;  // optional false:필수값, 게시글 객체 : ArticleComment 는 Article객체와 관계를 맺는 형태
     @Setter @Column(nullable = false, length = 500) private String content;
 
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy;
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
+//    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
+//    @CreatedBy @Column(nullable = false, length = 100) private String createdBy;
+//    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
+//    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
 
     protected ArticleComment() {}
 
