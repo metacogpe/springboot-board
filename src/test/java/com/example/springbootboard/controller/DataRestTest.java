@@ -39,4 +39,52 @@ public class DataRestTest {
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
                 .andDo(print());
     }
+
+    @DisplayName("[api] 게시글 단건 조회")
+    @Test
+    void givenNothing_whenRequestingArticle_thenReturnsArticleJsonResponse() throws Exception {
+        // given
+
+        // when & then
+        mvc.perform(get("/api/articles/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
+                .andDo(print());
+    }
+
+    @DisplayName("[api] 게시글 게시글 -> 댓글 조회")
+    @Test
+    void givenNothing_whenRequestingArticleCommentFromArticle_thenReturnsArticleCommentsJsonResponse() throws Exception {
+        // given
+
+        // when & then
+        mvc.perform(get("/api/articles/1/articleComments"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
+                .andDo(print());
+    }
+
+    @DisplayName("[api] 댓글 리스트 조회")
+    @Test
+    void givenNothing_whenRequestingArticleComments_thenReturnsArticleCommentsJsonResponse() throws Exception {
+        // given
+
+        // when & then
+        mvc.perform(get("/api/articleComments"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
+                .andDo(print());
+    }
+
+    @DisplayName("[api] 댓글 단건 조회")
+    @Test
+    void givenNothing_whenRequestingArticleComment_thenReturnsArticleCommentsJsonResponse() throws Exception {
+        // given
+
+        // when & then
+        mvc.perform(get("/api/articleComments/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
+                .andDo(print());
+    }
 }
