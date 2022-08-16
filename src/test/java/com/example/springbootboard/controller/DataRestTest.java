@@ -1,5 +1,6 @@
 package com.example.springbootboard.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Disabled("Spring Data REST 통합테스트는 불필요하므로 제외시킴")
 @DisplayName("Data REST - API Test")
 @Transactional  // DB에 영향을 주는 테스트이므로 어노테이션 추가 : 기본 동작은 롤백이 됨 (트랜잭션이 열리고, 닫히게 됨)
 //@WebMvcTest     // 컨트롤러에 대한 테스트이므로 MVC 테스트를 사용하기 위해 연결 -> 하지만 아래의 @SpringBootTest
