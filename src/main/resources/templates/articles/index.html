@@ -22,10 +22,48 @@
                 <option> 해시태그 </option>
             </select>
             <label for="search-value" hidden>검색어</label>
-                <input id="search-value" type="search" placeholder="검색..." name="search-value">
+                <input id="search-value" type="search" placeholder="검색어..." name="search-value">
             <button type="submit">검색</button>
         </form>
-        테이블
+
+        <table>
+            <thead>
+                <tr>
+<!--                강조를 의미하는 th 태그 사용 -->
+                    <th>제목</th>
+                    <th>해시태그</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>첫 글</td>
+                    <td>#java</td>
+                    <td>metacog</td>
+                    <td>2022-01-01</td>
+                </tr>
+                <tr>
+                    <td>두번째 글</td>
+                    <td>#spring</td>
+                    <td>metacog</td>
+                    <td>2022-01-02</td>
+                </tr>
+                <tr>
+                    <td>세번째 글</td>
+                    <td>#springboot</td>
+                    <td>metacog</td>
+                    <td>2022-01-03</td>
+                </tr>
+
+            </tbody>
+
+            <tfoot>
+
+            </tfoot>
+
+        </table>
         네비게이션 바
 
     </main>
