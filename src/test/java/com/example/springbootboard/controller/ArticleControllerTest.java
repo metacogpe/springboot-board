@@ -25,7 +25,7 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
-    @Disabled("구현 중")
+//    @Disabled("구현 중")
     @DisplayName("[view][GET] 게시글 리스트 (게시판) 페이지 - 정상 호출")
     @Test
     public void givenNothing_whenRequestingArticlesView_thenReturnsArticlesView() throws Exception {
@@ -33,7 +33,7 @@ class ArticleControllerTest {
         // when & then
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())  // 상태 체크
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
+                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
                 .andExpect(view().name("articles/index"))  // 뷰의 이름 체크
                 .andExpect(model().attributeExists("articles"));  // 데이터 있는지 여부까지 검사
     }
