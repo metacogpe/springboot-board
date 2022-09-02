@@ -46,7 +46,7 @@ class ArticleControllerTest {
         // when & then
         mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())  // 상태 체크
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
+                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
                 .andExpect(view().name("article/detail"))  // 뷰의 이름 체크
                 .andExpect(model().attributeExists("article")) // 데이터 있는지 여부까지 검사
                 .andExpect(view().name("articleComments")); // 뷰의 이름 체크
@@ -60,7 +60,7 @@ class ArticleControllerTest {
         // when & then
         mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())  // 상태 체크
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
+                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
                 .andExpect(view().name("articles/search"));  // 뷰의 이름 체크
     }
 
@@ -72,7 +72,7 @@ class ArticleControllerTest {
         // when & then
         mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())  // 상태 체크
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
+                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // 내용 타입 : 뷰라서 text html임
                 .andExpect(view().name("articles/search-hashtag"));  // 뷰의 이름 체크
     }
 
