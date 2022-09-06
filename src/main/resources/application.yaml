@@ -33,6 +33,8 @@ spring:
     rest:
       base-path: /api
       detection-strategy: annotated  # 지정한 것만 api로 노출
+  thymeleaf3:
+    decoupled-logic: true   # decoupled logic을 속성으로 관리
 
 
 ---
