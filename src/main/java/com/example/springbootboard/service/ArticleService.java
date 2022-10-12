@@ -2,6 +2,7 @@ package com.example.springbootboard.service;
 
 import com.example.springbootboard.domain.type.SearchType;
 import com.example.springbootboard.dto.ArticleDto;
+import com.example.springbootboard.dto.ArticleUpdateDto;
 import com.example.springbootboard.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -26,5 +27,14 @@ public class ArticleService {
     @Transactional(readOnly = true)
     public ArticleDto searchArticle(long l) {
         return null;
+    }
+
+    public void saveArticle(ArticleDto dto) {
+    }
+
+    public void updateArticle(long articleId, ArticleUpdateDto dto) {
+    }
+
+    public void deleteArticle(long articleId) {
     }
 }
